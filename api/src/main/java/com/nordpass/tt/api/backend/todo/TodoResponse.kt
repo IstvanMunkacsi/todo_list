@@ -5,5 +5,5 @@ internal class TodoResponse {
     var userId: Int? = null
     var title: String? = null
     var status: String? = null //One of completed or pending
-//    var dueOn: String? = null //"2021-09-30T00:00:00.000+05:30"
+    var dueOn: String? = null //"2021-09-30T00:00:00.000+05:30"
 }

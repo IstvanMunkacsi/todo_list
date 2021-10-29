@@ -9,11 +9,14 @@ internal class TodoResponseMapper @Inject constructor() {
         val id = response.id ?: return null
         val title = response.title ?: return null
         val completed = response.status == "completed"
+        val dueOn = response.dueOn ?: return null
+
         return Todo(
             id = id,
             title = title,
             isCompleted = completed,
-            updatedAt = ""
+            updatedAt = "",
+            dueOn = dueOn
         )
     }
 }
