@@ -10,4 +10,12 @@ class GetTodoListUseCase @Inject constructor(
     fun get(): Single<List<Todo>> {
         return storage.getAll()
     }
+
+    fun getSortedByDue(): Single<List<Todo>> {
+        return get().map { list ->
+            list.sortedWith(
+                compareBy<Todo> { todo -> todo.isCompleted }.thenBy { todo -> todo.dueOn }
+            )
+        }
+    }
 }
