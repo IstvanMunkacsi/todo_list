@@ -19,6 +19,11 @@ internal class RoomTodoStorage @Inject constructor(
             .subscribeOn(scheduler)
     }
 
+    override fun update(todo: Todo): Completable {
+        return dao.update(mapper.map(todo))
+            .subscribeOn(scheduler)
+    }
+
     override fun getAll(): Single<List<Todo>> {
         return dao.getAll()
             .map { list -> list.map(mapper::map) }

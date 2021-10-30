@@ -7,6 +7,8 @@ import io.reactivex.Single
 interface TodoStorage {
     fun save(todoList: List<Todo>): Completable
 
+    fun update(todo: Todo): Completable
+
     fun getAll(): Single<List<Todo>>
 
     fun getById(id: Int): Single<Todo>

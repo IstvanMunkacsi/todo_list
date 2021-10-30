@@ -5,8 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import com.nordpass.task.ui.base.BaseViewModel
 import com.nordpass.tt.usecase.Todo
 import com.nordpass.tt.usecase.common.Time
+import com.nordpass.tt.usecase.todolist.UpdateTodoUseCase
+import io.reactivex.rxkotlin.subscribeBy
 
-class TodoDetailsViewModel @ViewModelInject constructor() : BaseViewModel() {
+class TodoDetailsViewModel @ViewModelInject constructor(
+    private val updateTodoUseCase: UpdateTodoUseCase,
+) : BaseViewModel() {
 
     val item = MutableLiveData<Todo>()
 
@@ -27,6 +31,9 @@ class TodoDetailsViewModel @ViewModelInject constructor() : BaseViewModel() {
     }
 
     private fun updateCompleted(value: Boolean) {
-        item.value = item.value?.apply { setIsCompleted(value) }
+        val todo = item.value?.apply { setIsCompleted(value) } ?: return
+        updateTodoUseCase.update(todo)
+            .subscribeBy(onComplete = { item.postValue(todo) }, onError = ::handleError)
+            .attach()
     }
 }
