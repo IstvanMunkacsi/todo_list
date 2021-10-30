@@ -10,8 +10,8 @@ import java.io.Serializable
 data class Todo(
     val id: Int,
     val title: String,
-    val isCompleted: Boolean,
-    val updatedAt: String,
+    private var _isCompleted: Boolean,
+    private var _updatedAt: String,
     val dueOn: OffsetDateTime?,
 ) : Serializable {
     constructor(
@@ -27,6 +27,21 @@ data class Todo(
         updatedAt,
         Time.parseOrNull(dueOn, getDueOnFormatter())?.withCurrentOffsetSameInstant()
     )
+
+    val isCompleted
+        get() = _isCompleted
+
+    fun setIsCompleted(value: Boolean) {
+        _isCompleted = value
+        fieldsUpdated()
+    }
+
+    val updatedAt
+        get() = _updatedAt
+
+    private fun fieldsUpdated() {
+        _updatedAt = Time.now()
+    }
 
     val dueOnDateString
         get() = Time.formatOrNull(dueOn, getDueOnFormatter())

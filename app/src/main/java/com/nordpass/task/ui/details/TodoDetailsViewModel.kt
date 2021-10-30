@@ -4,8 +4,9 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.nordpass.task.ui.base.BaseViewModel
 import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.common.Time
 
-class TodoDetailsViewModel @ViewModelInject constructor(): BaseViewModel() {
+class TodoDetailsViewModel @ViewModelInject constructor() : BaseViewModel() {
 
     val item = MutableLiveData<Todo>()
 
@@ -14,14 +15,18 @@ class TodoDetailsViewModel @ViewModelInject constructor(): BaseViewModel() {
     }
 
     fun onFinishedClicked() {
-        //todo
+        updateCompleted(true)
     }
 
     fun onTodoClicked() {
-        //todo
+        updateCompleted(false)
     }
 
     fun onEditClicked() {
         //todo
+    }
+
+    private fun updateCompleted(value: Boolean) {
+        item.value = item.value?.apply { setIsCompleted(value) }
     }
 }
