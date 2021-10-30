@@ -1,5 +1,6 @@
 package com.nordpass.task.ui.list
 
+import android.content.Context
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
@@ -29,10 +30,22 @@ class TodoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             }
 
             findViewById<TextView>(R.id.itemDueOnTextView)?.apply {
-                text = context.getString(R.string.todoListDueOn, todo.dueOn)
+                val dueOnFormatted = todo.dueOnFormatted
+                if (dueOnFormatted == null) {
+                    visibility = View.GONE
+                    return
+                }
+
+                val dueOnText = formatDueOnText(context, dueOnFormatted)
+                text = dueOnText
                 strikeTextIfCompleted()
+                visibility = View.VISIBLE
             }
         }
+    }
+
+    private fun formatDueOnText(context: Context, dueOn: String): String {
+        return context.getString(R.string.todoListDueOn, dueOn)
     }
 
     companion object {

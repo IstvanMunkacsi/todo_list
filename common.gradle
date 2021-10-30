@@ -50,6 +50,7 @@ dependencies {
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_version"
 
     //Utils
+    //TODO: Consider using coreLibraryDesugaring instead
     implementation "com.jakewharton.threetenabp:threetenabp:1.2.2"
 
     //Tests

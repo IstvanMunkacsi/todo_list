@@ -21,7 +21,7 @@ internal class TodoMapper @Inject constructor() {
             title = todo.title,
             isCompleted = todo.isCompleted,
             updatedAt = todo.updatedAt,
-            dueOn = todo.dueOn
+            dueOn = todo.dueOnDateString ?: ""
         )
     }
 }
