@@ -5,6 +5,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.nordpass.task.R
 import com.nordpass.task.ui.base.BaseViewModel
+import com.nordpass.task.ui.base.SingleLiveEvent
 import com.nordpass.tt.usecase.data.Todo
 import com.nordpass.tt.usecase.todolist.UpdateTodoUseCase
 import io.reactivex.rxkotlin.subscribeBy
@@ -15,6 +16,7 @@ class TodoEditViewModel @ViewModelInject constructor(
 
     private var item: Todo? = null
     var title: String = ""
+    var navigateUp: SingleLiveEvent<Unit> = SingleLiveEvent()
 
     val validationError = MutableLiveData<@StringRes Int>()
 
@@ -44,7 +46,10 @@ class TodoEditViewModel @ViewModelInject constructor(
     private fun updateTitle() {
         val newItem = item?.copy()?.apply { setTitle(this@TodoEditViewModel.title) } ?: return
         updateTodoUseCase.update(newItem)
-            .subscribeBy(onComplete = { item = newItem }, onError = ::handleError)
+            .subscribeBy(onComplete = {
+                item = newItem
+                navigateUp.postValue(Unit)
+            }, onError = ::handleError)
             .attach()
     }
 

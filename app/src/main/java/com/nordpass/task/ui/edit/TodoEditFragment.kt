@@ -3,6 +3,7 @@ package com.nordpass.task.ui.edit
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nordpass.task.R
 import com.nordpass.task.databinding.FragmentEditBinding
@@ -19,6 +20,10 @@ class TodoEditFragment : BaseFragment(R.layout.fragment_edit) {
         if (savedInstanceState == null) {
             viewModel.init(args.todo)
         }
+
+        viewModel.navigateUp.observe(this, {
+            findNavController().navigateUp()
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
