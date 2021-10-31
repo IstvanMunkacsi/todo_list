@@ -31,7 +31,7 @@ class TodoDetailsViewModel @ViewModelInject constructor(
     }
 
     private fun updateCompleted(value: Boolean) {
-        val todo = item.value?.apply { setIsCompleted(value) } ?: return
+        val todo = item.value?.copy()?.apply { setIsCompleted(value) } ?: return
         updateTodoUseCase.update(todo)
             .subscribeBy(onComplete = { item.postValue(todo) }, onError = ::handleError)
             .attach()

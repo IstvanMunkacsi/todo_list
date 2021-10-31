@@ -4,6 +4,7 @@ import com.nordpass.tt.usecase.Todo
 import com.nordpass.tt.usecase.common.Io
 import com.nordpass.tt.usecase.todolist.TodoStorage
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import javax.inject.Inject
@@ -26,6 +27,12 @@ internal class RoomTodoStorage @Inject constructor(
 
     override fun getAll(): Single<List<Todo>> {
         return dao.getAll()
+            .map { list -> list.map(mapper::map) }
+            .subscribeOn(scheduler)
+    }
+
+    override fun observeAll(): Flowable<List<Todo>> {
+        return dao.observeAll()
             .map { list -> list.map(mapper::map) }
             .subscribeOn(scheduler)
     }
