@@ -37,7 +37,7 @@ class TodoEditViewModel @ViewModelInject constructor(
         updateTitle()
     }
 
-    private fun validateNewTitle(): TitleValidationError? {
+    fun validateNewTitle(): TitleValidationError? {
         if (title.trim().isEmpty()) return TitleValidationError.EMPTY
 
         return null

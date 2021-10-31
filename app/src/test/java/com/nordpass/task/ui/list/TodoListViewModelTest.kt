@@ -8,13 +8,10 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
 import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.ZoneOffset
 import kotlin.random.Random
 
-@RunWith(JUnit4::class)
 class TodoListViewModelTest {
     @get:Rule
     var rule: TestRule = InstantTaskExecutorRule()
