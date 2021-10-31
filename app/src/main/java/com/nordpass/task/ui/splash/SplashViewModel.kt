@@ -13,12 +13,11 @@ class SplashViewModel @ViewModelInject constructor(
     val completed = MutableLiveData<Unit>()
 
     init {
-        completed.postValue(Unit)
-//        syncTodoUseCase.sync()
-//            .doOnSubscribe { isLoading.postValue(true) }
-//            .doOnComplete { isLoading.postValue(false) }
-//            .doOnError { isLoading.postValue(false) }
-//            .subscribeBy(onComplete = { completed.postValue(Unit) }, onError = ::handleError)
-//            .attach()
+        syncTodoUseCase.sync()
+            .doOnSubscribe { isLoading.postValue(true) }
+            .doOnComplete { isLoading.postValue(false) }
+            .doOnError { isLoading.postValue(false) }
+            .subscribeBy(onComplete = { completed.postValue(Unit) }, onError = ::handleError)
+            .attach()
     }
 }
