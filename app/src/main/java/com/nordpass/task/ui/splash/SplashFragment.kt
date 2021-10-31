@@ -21,7 +21,10 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FragmentSplashBinding.bind(view).viewModel = viewModel
+        FragmentSplashBinding.bind(view).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@SplashFragment.viewModel
+        }
     }
 
     private fun showTodoList() {

@@ -36,8 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="64dp"
+            android:onClick="@{() -> viewModel.sync()}"
             android:text="@string/retryButtonLabel"
-            android:visibility="gone" />
+            android:visibility="@{viewModel.completed != null || viewModel.isLoading() ? View.GONE : View.VISIBLE}" />
 
     </FrameLayout>
 </layout>
