@@ -28,7 +28,7 @@ class TodoListFragment : BaseFragment(R.layout.fragment_list) {
         view.findViewById<RecyclerView>(R.id.todoRecycler)?.adapter = adapter
     }
 
-    private fun showTodoDetails(todo: Todo) {
-        findNavController().navigate(TodoListFragmentDirections.actionTodoDetails(todo))
+    private fun showTodoDetails(todoId: Int) {
+        findNavController().navigate(TodoListFragmentDirections.actionTodoDetails(todoId))
     }
 }

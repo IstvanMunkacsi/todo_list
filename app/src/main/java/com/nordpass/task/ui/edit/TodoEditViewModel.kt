@@ -23,13 +23,13 @@ class TodoEditViewModel @ViewModelInject constructor(
     fun onSaveClicked(title: String) {
         val validationError = validateNewTitle(title)
         this.validationError.postValue(validationError?.errorMessage)
-        if(validationError != null) return
+        if (validationError != null) return
 
         updateTitle(title)
     }
 
     private fun validateNewTitle(title: String): TitleValidationError? {
-        if(title.trim().isEmpty()) return TitleValidationError.EMPTY
+        if (title.trim().isEmpty()) return TitleValidationError.EMPTY
 
         return null
     }

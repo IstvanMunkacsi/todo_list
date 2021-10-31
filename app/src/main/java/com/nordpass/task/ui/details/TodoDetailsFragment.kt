@@ -21,7 +21,7 @@ class TodoDetailsFragment : BaseFragment(R.layout.fragment_details) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            viewModel.init(args.todo)
+            viewModel.init(args.todoId)
         }
         viewModel.showEdit.observe(this, Observer(::showTodoEdit))
     }

@@ -16,5 +16,7 @@ interface TodoStorage {
 
     fun getById(id: Int): Single<Todo>
 
+    fun observeById(id: Int): Flowable<Todo>
+
     fun removeById(ids: List<Int>): Completable
 }

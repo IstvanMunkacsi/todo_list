@@ -12,7 +12,7 @@ import com.nordpass.tt.usecase.Todo
 
 class TodoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bind(todo: Todo, listener: (Todo) -> Unit) {
+    fun bind(todo: Todo, listener: (Int) -> Unit) {
         fun TextView.strikeTextIfCompleted() {
             paintFlags = if (todo.isCompleted) {
                 paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -22,7 +22,7 @@ class TodoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
 
         itemView.apply {
-            setOnClickListener { listener(todo) }
+            setOnClickListener { listener(todo.id) }
 
             findViewById<TextView>(R.id.itemTitleTextView)?.apply {
                 text = todo.title

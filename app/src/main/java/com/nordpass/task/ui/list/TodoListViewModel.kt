@@ -11,7 +11,7 @@ class TodoListViewModel @ViewModelInject constructor(
     getTodoListUseCase: GetTodoListUseCase
 ) : BaseViewModel() {
     val items = MutableLiveData<List<Todo>>()
-    val showItem = MutableLiveData<Todo>()
+    val showItem = MutableLiveData<Int>()
 
     init {
         getTodoListUseCase.observe()
@@ -25,7 +25,7 @@ class TodoListViewModel @ViewModelInject constructor(
         )
     }
 
-    fun onItemClicked(todo: Todo) {
-        showItem.postValue(todo)
+    fun onItemClicked(todoId: Int) {
+        showItem.postValue(todoId)
     }
 }

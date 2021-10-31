@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.nordpass.tt.usecase.Todo
 
 class TodoListAdapter(
-    private val listener: (Todo) -> Unit
+    private val listener: (Int) -> Unit
 ) : ListAdapter<Todo, TodoViewHolder>(TodoDifferCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {

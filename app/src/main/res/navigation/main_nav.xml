@@ -31,8 +31,8 @@
         android:label="TodoDetailsFragment"
         tools:layout="@layout/fragment_details">
         <argument
-            android:name="todo"
-            app:argType="com.nordpass.tt.usecase.Todo" />
+            android:name="todoId"
+            app:argType="integer" />
         <action
             android:id="@+id/actionTodoEdit"
             app:destination="@id/todoEditFragment" />
