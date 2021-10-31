@@ -9,7 +9,7 @@ import java.io.Serializable
 
 data class Todo(
     val id: Int,
-    val title: String,
+    private var _title: String,
     private var _isCompleted: Boolean,
     private var _updatedAt: String,
     val dueOn: OffsetDateTime?,
@@ -27,6 +27,14 @@ data class Todo(
         updatedAt,
         Time.parseOrNull(dueOn, getDueOnFormatter())?.withCurrentOffsetSameInstant()
     )
+
+    val title
+        get() = _title
+
+    fun setTitle(title: String) {
+        _title = title
+        fieldsUpdated()
+    }
 
     val isCompleted
         get() = _isCompleted

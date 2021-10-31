@@ -13,6 +13,7 @@ class TodoDetailsViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
     val item = MutableLiveData<Todo>()
+    val showEdit = MutableLiveData<Todo>()
 
     fun init(item: Todo) {
         this.item.value = item
@@ -27,7 +28,7 @@ class TodoDetailsViewModel @ViewModelInject constructor(
     }
 
     fun onEditClicked() {
-        //todo
+        item.value?.let { showEdit.postValue(it) }
     }
 
     private fun updateCompleted(value: Boolean) {
