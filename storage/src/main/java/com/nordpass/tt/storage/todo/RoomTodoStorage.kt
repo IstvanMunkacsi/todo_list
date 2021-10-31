@@ -43,6 +43,12 @@ internal class RoomTodoStorage @Inject constructor(
             .subscribeOn(scheduler)
     }
 
+    override fun observeById(id: Int): Flowable<Todo> {
+        return dao.observeById(id)
+            .map(mapper::map)
+            .subscribeOn(scheduler)
+    }
+
     override fun removeById(ids: List<Int>): Completable {
         return dao.remove(ids)
             .subscribeOn(scheduler)

@@ -9,5 +9,11 @@
     <string name="completedLabel">Completed</string>
     <string name="unfinishedLabel">Unfinished</string>
 
+    <!--TodoList-->
     <string name="todoListDueOn">Due on: %1$s</string>
+
+    <!--TodoEdit-->
+    <string name="todoTitleEmptyError">Title can not be empty</string>
+    <string name="titleHint">Title</string>
+    <string name="saveButtonText">Save</string>
 </resources>
