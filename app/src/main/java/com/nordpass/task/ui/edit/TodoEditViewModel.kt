@@ -5,7 +5,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.nordpass.task.R
 import com.nordpass.task.ui.base.BaseViewModel
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 import com.nordpass.tt.usecase.todolist.UpdateTodoUseCase
 import io.reactivex.rxkotlin.subscribeBy
 

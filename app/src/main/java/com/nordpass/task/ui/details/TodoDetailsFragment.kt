@@ -9,8 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.nordpass.task.R
 import com.nordpass.task.databinding.FragmentDetailsBinding
 import com.nordpass.task.ui.base.BaseFragment
-import com.nordpass.task.ui.list.TodoListFragmentDirections
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

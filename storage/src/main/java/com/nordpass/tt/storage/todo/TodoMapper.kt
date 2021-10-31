@@ -1,6 +1,6 @@
 package com.nordpass.tt.storage.todo
 
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 import javax.inject.Inject
 
 internal class TodoMapper @Inject constructor() {

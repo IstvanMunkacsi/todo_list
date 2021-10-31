@@ -45,6 +45,6 @@
         tools:layout="@layout/fragment_edit">
         <argument
             android:name="todo"
-            app:argType="com.nordpass.tt.usecase.Todo" />
+            app:argType="com.nordpass.tt.usecase.data.Todo" />
     </fragment>
 </navigation>

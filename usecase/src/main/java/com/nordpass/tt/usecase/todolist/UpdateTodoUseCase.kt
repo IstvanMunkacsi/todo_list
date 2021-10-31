@@ -1,8 +1,7 @@
 package com.nordpass.tt.usecase.todolist
 
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 import io.reactivex.Completable
-import io.reactivex.Single
 import javax.inject.Inject
 
 class UpdateTodoUseCase @Inject constructor(

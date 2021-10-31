@@ -1,6 +1,6 @@
 package com.nordpass.tt.storage.todo
 
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 import com.nordpass.tt.usecase.common.Io
 import com.nordpass.tt.usecase.todolist.TodoStorage
 import io.reactivex.Completable

@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.nordpass.task.R
 import com.nordpass.task.ui.base.BaseFragment
-import com.nordpass.tt.usecase.Todo
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

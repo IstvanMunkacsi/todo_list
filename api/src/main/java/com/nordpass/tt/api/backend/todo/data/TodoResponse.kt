@@ -1,4 +1,4 @@
-package com.nordpass.tt.api.backend.todo
+package com.nordpass.tt.api.backend.todo.data
 
 internal class TodoResponse {
     var id: Int? = null

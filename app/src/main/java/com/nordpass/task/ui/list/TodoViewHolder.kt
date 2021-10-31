@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nordpass.task.R
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 
 class TodoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

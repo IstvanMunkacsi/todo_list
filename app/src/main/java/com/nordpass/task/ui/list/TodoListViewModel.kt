@@ -3,7 +3,7 @@ package com.nordpass.task.ui.list
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.nordpass.task.ui.base.BaseViewModel
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 import com.nordpass.tt.usecase.todolist.GetTodoListUseCase
 import io.reactivex.rxkotlin.subscribeBy
 

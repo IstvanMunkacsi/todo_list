@@ -1,6 +1,6 @@
 package com.nordpass.tt.usecase.todolist
 
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 import io.reactivex.Single
 
 interface TodoListApi {

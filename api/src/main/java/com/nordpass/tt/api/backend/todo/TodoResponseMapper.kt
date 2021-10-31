@@ -1,6 +1,7 @@
 package com.nordpass.tt.api.backend.todo
 
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.api.backend.todo.data.TodoResponse
+import com.nordpass.tt.usecase.data.Todo
 import javax.inject.Inject
 
 internal class TodoResponseMapper @Inject constructor() {
