@@ -1,5 +1,6 @@
 package com.nordpass.tt.usecase
 
+import androidx.annotation.Keep
 import com.nordpass.tt.usecase.common.Time
 import com.nordpass.tt.usecase.common.Time.withCurrentOffsetSameInstant
 import org.threeten.bp.OffsetDateTime
@@ -7,6 +8,9 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 import java.io.Serializable
 
+/** prevent class from obfuscation during release build
+since it is used as typeArg via safeargs (in navigation graph) **/
+@Keep
 data class Todo(
     val id: Int,
     private var _title: String,
