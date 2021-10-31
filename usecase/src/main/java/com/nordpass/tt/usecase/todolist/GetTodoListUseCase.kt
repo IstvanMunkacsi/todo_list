@@ -1,6 +1,7 @@
 package com.nordpass.tt.usecase.todolist
 
 import com.nordpass.tt.usecase.Todo
+import io.reactivex.Flowable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -11,11 +12,7 @@ class GetTodoListUseCase @Inject constructor(
         return storage.getAll()
     }
 
-    fun getSortedByDue(): Single<List<Todo>> {
-        return get().map { list ->
-            list.sortedWith(
-                compareBy<Todo> { todo -> todo.isCompleted }.thenBy { todo -> todo.dueOn }
-            )
-        }
+    fun observe(): Flowable<List<Todo>> {
+        return storage.observeAll()
     }
 }

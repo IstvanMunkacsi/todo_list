@@ -1,9 +1,6 @@
 package com.nordpass.tt.storage.todo
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -12,6 +9,9 @@ import io.reactivex.Single
 internal interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun updateOrCreate(list: List<TodoEntity>): Completable
+
+    @Update
+    fun update(todoEntity: TodoEntity): Completable
 
     @Query("SELECT * FROM $TABLE_NAME")
     fun getAll(): Single<List<TodoEntity>>

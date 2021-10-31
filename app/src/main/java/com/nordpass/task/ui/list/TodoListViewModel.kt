@@ -14,9 +14,15 @@ class TodoListViewModel @ViewModelInject constructor(
     val showItem = MutableLiveData<Todo>()
 
     init {
-        getTodoListUseCase.getSortedByDue()
-            .subscribeBy(onSuccess = items::postValue, onError = ::handleError)
+        getTodoListUseCase.observe()
+            .subscribeBy(onNext = { items.postValue(it.sortByDue()) }, onError = ::handleError)
             .attach()
+    }
+
+    private fun List<Todo>.sortByDue(): List<Todo> {
+        return sortedWith(
+            compareBy<Todo> { todo -> todo.isCompleted }.thenBy { todo -> todo.dueOn }
+        )
     }
 
     fun onItemClicked(todo: Todo) {

@@ -23,6 +23,9 @@ class TodoDetailsFragment : BaseFragment(R.layout.fragment_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FragmentDetailsBinding.bind(view).viewModel = viewModel
+        FragmentDetailsBinding.bind(view).apply {
+            lifecycleOwner = this@TodoDetailsFragment
+            viewModel = this@TodoDetailsFragment.viewModel
+        }
     }
 }
