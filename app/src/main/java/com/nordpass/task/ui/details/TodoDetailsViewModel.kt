@@ -3,6 +3,7 @@ package com.nordpass.task.ui.details
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.nordpass.task.ui.base.BaseViewModel
+import com.nordpass.task.ui.base.SingleLiveEvent
 import com.nordpass.tt.usecase.data.Todo
 import com.nordpass.tt.usecase.todolist.GetTodoItemUseCase
 import com.nordpass.tt.usecase.todolist.UpdateTodoUseCase
@@ -14,7 +15,7 @@ class TodoDetailsViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
     val item = MutableLiveData<Todo>()
-    val showEdit = MutableLiveData<Todo>()
+    val showEdit = SingleLiveEvent<Todo>()
 
     fun init(todoId: Int) {
         getTodoItemUseCase.observe(todoId)
