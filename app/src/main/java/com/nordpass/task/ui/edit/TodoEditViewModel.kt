@@ -13,31 +13,38 @@ class TodoEditViewModel @ViewModelInject constructor(
     private val updateTodoUseCase: UpdateTodoUseCase,
 ) : BaseViewModel() {
 
-    val item = MutableLiveData<Todo>()
+    private var item: Todo? = null
+    var title: String = ""
+
     val validationError = MutableLiveData<@StringRes Int>()
 
     fun init(item: Todo) {
-        this.item.value = item
+        this.item = item
+        title = item.title
     }
 
-    fun onSaveClicked(title: String) {
-        val validationError = validateNewTitle(title)
+    fun onTitleChanged(newTitle: CharSequence) {
+        this.title = newTitle.toString()
+    }
+
+    fun onSaveClicked() {
+        val validationError = validateNewTitle()
         this.validationError.postValue(validationError?.errorMessage)
         if (validationError != null) return
 
-        updateTitle(title)
+        updateTitle()
     }
 
-    private fun validateNewTitle(title: String): TitleValidationError? {
+    private fun validateNewTitle(): TitleValidationError? {
         if (title.trim().isEmpty()) return TitleValidationError.EMPTY
 
         return null
     }
 
-    private fun updateTitle(title: String) {
-        val todo = item.value?.copy()?.apply { setTitle(title) } ?: return
-        updateTodoUseCase.update(todo)
-            .subscribeBy(onComplete = { item.postValue(todo) }, onError = ::handleError)
+    private fun updateTitle() {
+        val newItem = item?.copy()?.apply { setTitle(this@TodoEditViewModel.title) } ?: return
+        updateTodoUseCase.update(newItem)
+            .subscribeBy(onComplete = { item = newItem }, onError = ::handleError)
             .attach()
     }
 

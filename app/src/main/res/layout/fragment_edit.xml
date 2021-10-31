@@ -30,8 +30,8 @@
                 android:id="@+id/titleEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@{viewModel.item.title}" />
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.onTitleChanged(text)}"
+                android:text="@{viewModel.title}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -42,7 +42,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
-            android:onClick="@{view -> viewModel.onSaveClicked(titleEditText.getText().toString())}"
+            android:onClick="@{view -> viewModel.onSaveClicked()}"
             android:text="@string/saveButtonText"
             app:cornerRadius="36dp" />
     </FrameLayout>
