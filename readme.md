@@ -2,7 +2,7 @@
 
 ## Bonus Task 1:
 * Todo list is empty after returning from other screen to TodoList screen
-   1. Open app
+   1. Open app\
       ER/AR: Todo list filled with items
    2. Click on any item to open TodoDetailsFragment
    3. Press 'back' button to return to TodoListFragment\
