@@ -1,6 +1,6 @@
 package com.nordpass.tt.storage.todo
 
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 import javax.inject.Inject
 
 internal class TodoMapper @Inject constructor() {
@@ -10,7 +10,8 @@ internal class TodoMapper @Inject constructor() {
             id = entity.id,
             title = entity.title,
             isCompleted = entity.isCompleted,
-            updatedAt = entity.updatedAt
+            updatedAt = entity.updatedAt,
+            dueOn = entity.dueOn
         )
     }
 
@@ -19,7 +20,8 @@ internal class TodoMapper @Inject constructor() {
             id = todo.id,
             title = todo.title,
             isCompleted = todo.isCompleted,
-            updatedAt = todo.updatedAt
+            updatedAt = todo.updatedAt,
+            dueOn = todo.dueOnDateString ?: ""
         )
     }
 }

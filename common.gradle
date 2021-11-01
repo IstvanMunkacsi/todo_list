@@ -50,6 +50,7 @@ dependencies {
     kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_version"
 
     //Utils
+    //TODO: Consider using coreLibraryDesugaring instead
     implementation "com.jakewharton.threetenabp:threetenabp:1.2.2"
 
     //Tests
@@ -58,6 +59,7 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$mockito_version"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
     testImplementation 'junit:junit:4.13.1'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
 
     androidTestImplementation 'androidx.test:runner:1.2.0'
 }

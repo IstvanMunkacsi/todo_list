@@ -2,10 +2,10 @@ package com.nordpass.task.ui.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.nordpass.tt.usecase.Todo
+import com.nordpass.tt.usecase.data.Todo
 
 class TodoListAdapter(
-    private val listener: (Todo) -> Unit
+    private val listener: (Int) -> Unit
 ) : ListAdapter<Todo, TodoViewHolder>(TodoDifferCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {

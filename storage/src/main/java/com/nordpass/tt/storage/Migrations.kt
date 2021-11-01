@@ -14,4 +14,13 @@ internal object Migrations {
             )
         }
     }
+
+    val migration_2_3 = object : Migration(2, 3) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            val table = TodoDao.TABLE_NAME
+            database.execSQL(
+                "ALTER TABLE $table ADD COLUMN dueOn TEXT NOT NULL DEFAULT ''"
+            )
+        }
+    }
 }

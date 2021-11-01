@@ -1,6 +1,6 @@
 package com.nordpass.tt.api.backend
 
-import com.nordpass.tt.api.backend.todo.TodoListResponse
+import com.nordpass.tt.api.backend.todo.data.TodoListResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

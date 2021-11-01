@@ -7,12 +7,16 @@ import com.nordpass.tt.usecase.todolist.SyncTodoUseCase
 import io.reactivex.rxkotlin.subscribeBy
 
 class SplashViewModel @ViewModelInject constructor(
-    syncTodoUseCase: SyncTodoUseCase
+    private val syncTodoUseCase: SyncTodoUseCase
 ) : BaseViewModel() {
     val isLoading = MutableLiveData<Boolean>()
     val completed = MutableLiveData<Unit>()
 
     init {
+        sync()
+    }
+
+    fun sync() {
         syncTodoUseCase.sync()
             .doOnSubscribe { isLoading.postValue(true) }
             .doOnComplete { isLoading.postValue(false) }

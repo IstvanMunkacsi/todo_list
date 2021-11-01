@@ -4,3 +4,5 @@
 /local.properties
 /build
 /captures
+*.apk
+app/release/output-metadata.json
