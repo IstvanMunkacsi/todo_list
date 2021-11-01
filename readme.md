@@ -1,7 +1,7 @@
-#  Notes about Bonus Tasks
+##  Notes about Bonus Tasks
 
-Bonus Task 1:
-a) Todo list is empty after returning from other screen to TodoList screen
+# Bonus Task 1:
+* Todo list is empty after returning from other screen to TodoList screen
    1. Open app
       ER/AR: Todo list filled with items
    2. Click on any item to open TodoDetailsFragment
@@ -9,14 +9,14 @@ a) Todo list is empty after returning from other screen to TodoList screen
       ER: Todo list is filled with items
       AR: Todo list is empty
 
-b) TodoDetails/TodoEdit overlap after rotation
+* TodoDetails/TodoEdit overlap after rotation
    1. Open TodoDetails or TodoEdit screen
    2. Rotate device
    3. Press 'back' button
       ER: TodoDetails/TodoEdit is closed
       AR: TodoDetails/TodoEdit still showing on screen
 
-c) SplashScreen: Retry button still not shown after error occurred
+* SplashScreen: Retry button still not shown after error occurred
    1. Turn off the internet
    2. Open the app
    3. Receive toast about error on Splash screen
@@ -25,21 +25,21 @@ c) SplashScreen: Retry button still not shown after error occurred
 
 -------------------------------------------------------------------------------------------------
 
-Bonus Task 2:
-a) App crashed because in release version, code is being obfuscated. The problem is that minification affectes also classes used as argType via 'navigation.safeargs' (in navigation graph).
+# Bonus Task 2:
+* App crashed because in release version, code is being obfuscated. The problem is that minification affectes also classes used as argType via 'navigation.safeargs' (in navigation graph).
 There was one such class in the project: Todo. Additional source and other solutions: https://developer.android.com/guide/navigation/navigation-pass-data#proguard_considerations
 
-b) TodoList was empty because TodoListResponse and TodoResponse were obfuscated too.
+* TodoList was empty because TodoListResponse and TodoResponse were obfuscated too.
 Fixed mentioned issues by adding rule to proguard-rules.pro to keep classes in 'data' fodler for each module and moved mentioned classes there.
 Also classes could be just anotated with @Keep (Since for example MetaReponse is not used), but then it is easy to forget to add mentioned @Keep annotation for newly created data objects.
 
 -------------------------------------------------------------------------------------------------
 
-Bonus Task 3:
-a) MigrationsTest: Added validateMigration_1_3 / validateMigration_2_3 tests
-b) UpdateTodoUseCaseTest: added update_itemUpdated test
-c) TodoListViewModelTest: added load_itemsSortedProperly test. Refactored TodoListViewModel--GetTodoListUseCase composition to dependency inversion
-d) TodoEditViewModelTest: implemented tests for title validation function
+# Bonus Task 3:
+* MigrationsTest: Added validateMigration_1_3 / validateMigration_2_3 tests
+* UpdateTodoUseCaseTest: added update_itemUpdated test
+* TodoListViewModelTest: added load_itemsSortedProperly test. Refactored TodoListViewModel--GetTodoListUseCase composition to dependency inversion
+* TodoEditViewModelTest: implemented tests for title validation function
 
 # Android Tech Task
 
