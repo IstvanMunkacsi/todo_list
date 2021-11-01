@@ -1,7 +1,6 @@
 package com.nordpass.tt.usecase.data
 
 import com.nordpass.tt.usecase.common.Time
-import com.nordpass.tt.usecase.common.Time.withCurrentOffsetSameInstant
 import org.threeten.bp.OffsetDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
@@ -25,7 +24,7 @@ data class Todo(
         title,
         isCompleted,
         updatedAt,
-        Time.parseOrNull(dueOn, getDueOnFormatter())?.withCurrentOffsetSameInstant()
+        Time.parseOrNull(dueOn, getDueOnFormatter(), matchCurrentOffset = true)
     )
 
     val title

@@ -11,8 +11,17 @@ object Time {
         return zoneId.rules.getOffset(Instant.now())
     }
 
-    fun parseOrNull(value: String?, formatter: DateTimeFormatter): OffsetDateTime? {
-        return tryOrNull { OffsetDateTime.parse(value, formatter) }
+    fun parseOrNull(
+        value: String?,
+        formatter: DateTimeFormatter,
+        matchCurrentOffset: Boolean = false
+    ): OffsetDateTime? {
+        return tryOrNull {
+            val date = OffsetDateTime.parse(value, formatter)
+            if (matchCurrentOffset) return@tryOrNull date?.withCurrentOffsetSameInstant()
+
+            return@tryOrNull date
+        }
     }
 
     fun formatOrNull(value: OffsetDateTime?, formatter: DateTimeFormatter): String? {
@@ -27,7 +36,7 @@ object Time {
         }
     }
 
-    fun OffsetDateTime.withCurrentOffsetSameInstant(): OffsetDateTime {
+    private fun OffsetDateTime.withCurrentOffsetSameInstant(): OffsetDateTime {
         return withOffsetSameInstant(currentZoneOffset())
     }
 }
