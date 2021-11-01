@@ -6,11 +6,6 @@ import org.threeten.bp.format.DateTimeFormatter
 object Time {
     fun now() = OffsetDateTime.now().toString()
 
-    private fun currentZoneOffset(): ZoneOffset {
-        val zoneId = ZoneId.systemDefault()
-        return zoneId.rules.getOffset(Instant.now())
-    }
-
     fun parseOrNull(
         value: String?,
         formatter: DateTimeFormatter,
@@ -38,5 +33,10 @@ object Time {
 
     private fun OffsetDateTime.withCurrentOffsetSameInstant(): OffsetDateTime {
         return withOffsetSameInstant(currentZoneOffset())
+    }
+
+    private fun currentZoneOffset(): ZoneOffset {
+        val zoneId = ZoneId.systemDefault()
+        return zoneId.rules.getOffset(Instant.now())
     }
 }
