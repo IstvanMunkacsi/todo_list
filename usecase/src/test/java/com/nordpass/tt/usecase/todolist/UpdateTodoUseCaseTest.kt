@@ -10,7 +10,6 @@ import org.junit.Test
 
 class UpdateTodoUseCaseTest {
     private lateinit var useCase: UpdateTodoUseCase
-    private val api: TodoListApi = mock()
     private val storage: TodoStorage = mock()
 
     @Before
