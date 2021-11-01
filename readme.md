@@ -26,12 +26,12 @@
 -------------------------------------------------------------------------------------------------
 
 ## Bonus Task 2:
-* App crashed because in release version, code is being obfuscated. The problem is that minification affectes also classes used as argType via 'navigation.safeargs' (in navigation graph).
+* App crashed because in release version, code is being obfuscated. The problem is that minification affects also classes used as argType via 'navigation.safeargs' (in navigation graph).
 There was one such class in the project: Todo. Additional source and other solutions: https://developer.android.com/guide/navigation/navigation-pass-data#proguard_considerations
 
 * TodoList was empty because TodoListResponse and TodoResponse were obfuscated too.
-Fixed mentioned issues by adding rule to proguard-rules.pro to keep classes in 'data' fodler for each module and moved mentioned classes there.
-Also classes could be just anotated with @Keep (Since for example MetaReponse is not used), but then it is easy to forget to add mentioned @Keep annotation for newly created data objects.
+Fixed mentioned issues by adding rule to proguard-rules.pro to keep classes in 'data' folder for each module and moved mentioned classes there.
+Also classes could be just annotated with @Keep (Since for example MetaResponse is not used), but then it is easy to forget to add mentioned @Keep annotation for newly created data objects.
 
 -------------------------------------------------------------------------------------------------
 
